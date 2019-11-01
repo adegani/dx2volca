@@ -3,3 +3,4 @@
 *.pyc
 *__pychache__/
 *egg-info
+.vscode
