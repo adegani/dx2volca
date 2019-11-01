@@ -72,7 +72,7 @@ class Dx7Parser(object):
         checksum = msg[-2]
         # THE FIX: all operator in ON
         # Korg Volca FM interprets the checksum byte as operator ON/OFF command
-        msg[-2] = 63
+        msg[161] = 63
         log.info("FIX: ALL operators are ON")
         log.debug("%s: 1 Voice bulk on ch %d, with %d bytes (CHECK: %s)" % (voice_name, channel, byte_count, checksum))
         return msg
@@ -99,7 +99,7 @@ class Dx7Parser(object):
         if msg[1] != self.sysex_id:
             log.warning("Message is not a DX7 SYSEX (id %d)" % msg[1])
             return -1
-        if len(msg) == 163:
+        if len(msg) == 163 or len(msg) == 169:
             log.debug("Message is DX7 1 Voice Bulk data")
             return 0
         if len(msg) == 4104:
