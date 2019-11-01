@@ -59,4 +59,3 @@ class Dx7Parser(object):
 
         log.warning("Message is DX7 SYSEX but not recognized (len=%d)" % len(msg))
         return -1
-        
